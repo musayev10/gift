@@ -121,7 +121,6 @@
             }
         }
 
-        /* Убегающая кнопка */
         #no-btn {
             position: relative;
             transition: 0.1s ease;
@@ -133,20 +132,24 @@
     <!-- Фоновая музыка -->
     <audio id="bg-music" src="music.mp3" loop></audio>
 
+    <!-- Шаг 1: Приветствие -->
     <div class="container" id="step-1">
         <h1>Привет, моя дорогая Фарзона! ❤️</h1>
-        <p>Я приготовил для тебя кое-что особенное. Готова посмотреть?</p>
-        <button class="btn" onclick="nextStep(2)">Да, с удовольствием! ✨</button>
+        <p>Я приготовил для тебя кое-что особенное. Нажми кнопку ниже, чтобы начать ✨</p>
+        <button class="btn" onclick="nextStep(2)">Открыть подарок ✨</button>
     </div>
 
+    <!-- Шаг 2: Фото и поздравление -->
     <div class="container hidden" id="step-2">
         <div class="photo-frame">
             <img src="photo.jpg" alt="Фарзона">
         </div>
-        <p>Ты — самое прекрасное, что случалось в моей жизни. Твоя улыбка озаряет всё вокруг! 🌸</p>
+        <h1>С днем рождения! 🎉</h1>
+        <p>Ты — самое прекрасное и светлое, что есть в моей жизни. Пусть твоя улыбка сияет каждый день, а все мечты обязательно исполняются! 🌸</p>
         <button class="btn" onclick="nextStep(3)">Дальше ❤️</button>
     </div>
 
+    <!-- Шаг 3: Вопрос с убегающей кнопкой -->
     <div class="container hidden" id="step-3">
         <h1>Скажи честно...</h1>
         <p id="question-text">Ты ведь любишь меня так же сильно, как и я тебя? 🥰</p>
@@ -156,6 +159,7 @@
         </div>
     </div>
 
+    <!-- Шаг 4: Финал -->
     <div class="container hidden" id="step-4">
         <h1>Ура! 🎉</h1>
         <p>Я знал! Ты моя самая любимая, невероятная и особенная! Люблю тебя бесконечно! 💖✨</p>
@@ -174,7 +178,7 @@
         let phraseIndex = 0;
 
         function nextStep(step) {
-            // Включаем музыку на первом шаге
+            // Включаем музыку при переходе со 2-го шага (или с 1-го)
             if (step === 2) {
                 const music = document.getElementById('bg-music');
                 music.play().catch(e => console.log("Автозапуск заблокирован браузером"));
@@ -202,10 +206,11 @@
             phraseIndex = 0;
             document.getElementById('question-text').innerText = "Ты ведь любишь меня так же сильно, как и я тебя? 🥰";
             document.getElementById('no-btn').style.transform = 'translate(0, 0)';
+            nextStyleReset();
             nextStep(1);
         }
 
-        // Генерация плавающих сердечек в фоне
+        // Генерация плавающих сердечек
         setInterval(() => {
             const heart = document.createElement('div');
             heart.classList.add('heart-float');
@@ -213,7 +218,7 @@
             heart.style.left = Math.random() * 100 + 'vw';
             heart.style.bottom = '-20px';
             heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
-            heart.style.animationDuration = (Math.random() * 3 + 3) + 'سs';
+            heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
             document.body.appendChild(heart);
 
             setTimeout(() => {
