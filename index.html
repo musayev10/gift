@@ -2,229 +2,557 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Для моей любимой Фарзоны ❤️</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Для моей прекрасной Фарзоны ❤️</title>
     <style>
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
-            background: linear-gradient(135deg, #ff758c, #ff7eb3);
-            min-height: 100vh;
+            background: linear-gradient(-45deg, #ff758c, #ff7eb3, #7afcff, #feae73);
+            background-size: 400% 400%;
+            animation: gradientBG 10s ease infinite;
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
             display: flex;
             justify-content: center;
             align-items: center;
-            overflow-x: hidden;
-            color: #fff;
-            text-align: center;
-            padding: 20px;
-        }
-
-        .container {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(12px);
-            border-radius: 20px;
-            padding: 30px;
-            max-width: 450px;
-            width: 100%;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            border: 1px solid rgba(255, 255, 255, 0.3);
             position: relative;
-            z-index: 2;
         }
 
-        h1 {
-            font-size: 26px;
-            margin-bottom: 15px;
-            color: #fff;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
-        p {
-            font-size: 16px;
-            margin-bottom: 25px;
-            line-height: 1.5;
-            color: #fff;
-        }
-
-        .btn {
-            background: #ff3366;
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            font-size: 16px;
+        .music-btn {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid #ff4d6d;
             border-radius: 50px;
-            cursor: pointer;
-            transition: 0.3s;
-            box-shadow: 0 4px 15px rgba(255, 51, 102, 0.4);
+            padding: 8px 15px;
+            font-size: 13px;
             font-weight: bold;
-            margin: 10px;
+            color: #ff4d6d;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
 
-        .btn:hover {
-            background: #e60039;
-            transform: scale(1.05);
+        .sparkle-bg {
+            position: absolute;
+            top: -20px;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 16px;
+            animation: fall linear infinite;
+            z-index: 1;
+            pointer-events: none;
+            will-change: transform;
         }
 
-        .btn-secondary {
-            background: rgba(255, 255, 255, 0.3);
-            color: #fff;
-            border: 1px solid #fff;
+        @keyframes fall {
+            0% { transform: translate3d(0, 0, 0) rotate(0deg); opacity: 1; }
+            100% { transform: translate3d(0, 105vh, 0) rotate(360deg); opacity: 0; }
         }
 
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.5);
+        .card {
+            background: rgba(255, 255, 255, 0.96);
+            padding: 22px 18px;
+            border-radius: 25px;
+            box-shadow: 0 0 25px rgba(255, 75, 110, 0.5);
+            animation: pulseGlow 3s infinite alternate;
+            text-align: center;
+            max-width: 420px;
+            width: 90%;
+            max-height: 88vh;
+            overflow-y: auto;
+            z-index: 10;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 15px rgba(255, 75, 110, 0.4); }
+            100% { box-shadow: 0 0 30px rgba(255, 75, 110, 0.8); }
+        }
+
+        .card.active { 
+            display: flex; 
+            animation: popIn 0.4s ease-out;
+        }
+
+        @keyframes popIn {
+            from { opacity: 0; transform: scale(0.85); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        h1 { color: #d63384; margin-bottom: 12px; font-size: 24px; }
+        h2 { color: #ff4d6d; margin-bottom: 12px; font-size: 20px; }
+        
+        .poem-text {
+            color: #333;
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+
+        .highlight {
+            color: #ff4757;
+            font-weight: bold;
         }
 
         .photo-frame {
-            width: 180px;
-            height: 180px;
+            width: 140px;
+            height: 140px;
             border-radius: 50%;
-            overflow: hidden;
-            margin: 0 auto 20px auto;
-            border: 4px solid #fff;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-
-        .photo-frame img {
-            width: 100%;
-            height: 100%;
             object-fit: cover;
+            border: 4px solid #ff4d6d;
+            box-shadow: 0 5px 15px rgba(255, 77, 109, 0.4);
+            margin-bottom: 12px;
         }
 
-        .hidden {
-            display: none;
+        .photo-frame-rect {
+            width: 100%;
+            max-height: 200px;
+            border-radius: 18px;
+            object-fit: cover;
+            border: 3px solid #ff4d6d;
+            box-shadow: 0 5px 15px rgba(255, 77, 109, 0.3);
+            margin-bottom: 12px;
         }
 
-        /* Плавающие сердечки */
-        .heart-float {
-            position: absolute;
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 20px;
-            user-select: none;
-            pointer-events: none;
-            animation: flyUp 4s linear infinite;
+        .timer-box {
+            background: rgba(255, 230, 238, 0.8);
+            border: 1px dashed #ff4d6d;
+            border-radius: 15px;
+            padding: 8px 12px;
+            margin-bottom: 12px;
+            width: 100%;
+            font-size: 13px;
+            color: #d63384;
+            font-weight: bold;
         }
 
-        @keyframes flyUp {
-            0% {
-                transform: translateY(0) scale(0.8);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-100vh) scale(1.4);
-                opacity: 0;
-            }
+        .secrets-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 100%;
+            margin-bottom: 12px;
         }
 
-        #no-btn {
+        .secret-card {
+            background: #fff;
+            border: 2px dashed #ff4d6d;
+            border-radius: 15px;
+            padding: 12px;
+            font-size: 13px;
+            color: #ff4d6d;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .secret-card.revealed {
+            background: #ffe6ee;
+            border-style: solid;
+            color: #333;
+            font-weight: normal;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            margin-top: 8px;
             position: relative;
-            transition: 0.1s ease;
+        }
+
+        button {
+            background: linear-gradient(45deg, #ff4b2b, #ff416c);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(255, 65, 108, 0.4);
+            transition: transform 0.2s;
+            outline: none;
+        }
+
+        button:active { transform: scale(0.95); }
+
+        .btn-no {
+            background: #718093;
+            box-shadow: 0 4px 12px rgba(113, 128, 147, 0.3);
+        }
+
+        .runaway-btn {
+            position: fixed;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+            z-index: 999;
+        }
+
+        .location-opts {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .loc-btn {
+            background: white;
+            color: #ff4d6d;
+            border: 2px solid #ff4d6d;
+            width: 100%;
+            text-align: center;
+            border-radius: 14px;
+        }
+
+        .loc-btn.selected {
+            background: #ff4d6d;
+            color: white;
+        }
+
+        .sub-text {
+            font-size: 12px;
+            color: #888;
+            margin-top: 6px;
+            font-weight: bold;
+        }
+
+        .arena-box {
+            position: relative;
+            width: 100%;
+            height: 110px;
+            margin-top: 10px;
         }
     </style>
 </head>
 <body>
 
-    <!-- Фоновая музыка -->
-    <audio id="bg-music" src="music.mp3" loop></audio>
-
-    <!-- Шаг 1: Приветствие -->
-    <div class="container" id="step-1">
-        <h1>Привет, моя дорогая Фарзона! ❤️</h1>
-        <p>Я приготовил для тебя кое-что особенное. Нажми кнопку ниже, чтобы начать ✨</p>
-        <button class="btn" onclick="nextStep(2)">Открыть подарок ✨</button>
+    <div class="music-btn" onclick="toggleMusic()">
+        <span id="musicIcon">🎵</span> <span id="musicText">Музыка</span>
     </div>
 
-    <!-- Шаг 2: Фото и поздравление -->
-    <div class="container hidden" id="step-2">
-        <div class="photo-frame">
-            <img src="photo.jpg" alt="Фарзона">
+    <!-- Прямая ссылка на твою музыку в GitHub репозитории -->
+    <audio id="bgMusic" loop preload="auto" src="https://raw.githubusercontent.com/musayev10/gift/main/music.mp3"></audio>
+
+    <div class="card active" id="step1">
+        <h1>Привет, моя милая ФАРЗОНА ❤️</h1>
+        <p class="poem-text">Сегодня особенный день, когда в этом мире появилась ты — самый яркий лучик света. Я приготовил кое-что от чистого сердца...</p>
+        <button onclick="startExperience()">Открыть подарок ✨</button>
+    </div>
+
+    <div class="card" id="step2">
+        <img src="photo.jpg" alt="Фарзона" class="photo-frame">
+        <h2>С Днём Рождения, Моё Солнце! 🌹</h2>
+        
+        <div class="timer-box" id="timeTogether">
+            Мы знакомы уже: считаем...
         </div>
-        <h1>С днем рождения! 🎉</h1>
-        <p>Ты — самое прекрасное и светлое, что есть в моей жизни. Пусть твоя улыбка сияет каждый день, а все мечты обязательно исполняются! 🌸</p>
-        <button class="btn" onclick="nextStep(3)">Дальше ❤️</button>
-    </div>
 
-    <!-- Шаг 3: Вопрос с убегающей кнопкой -->
-    <div class="container hidden" id="step-3">
-        <h1>Скажи честно...</h1>
-        <p id="question-text">Ты ведь любишь меня так же сильно, как и я тебя? 🥰</p>
-        <div style="position: relative; min-height: 100px; display: flex; justify-content: center; align-items: center; flex-wrap: wrap;">
-            <button class="btn" id="yes-btn" onclick="nextStep(4)">Конечно, безумно! ❤️</button>
-            <button class="btn btn-secondary" id="no-btn" onmouseover="moveNoButton()" onclick="handleNoClick()">Нет 👀</button>
+        <p class="poem-text">
+            Фарзона, в этот праздничный день я хочу пожелать тебе бесконечного счастья! <br>
+            Ты обладаешь редким даром — озарять всё вокруг своей чарующей улыбкой. <br>
+            <span class="highlight">Ты самое лучшее, что случалось со мной!</span> ❤️
+        </p>
+        <div class="sub-text">Хочешь узнать, что дальше?</div>
+        <div class="btn-group">
+            <button id="nextBtn2" onclick="nextStep(2)">Дальше</button>
+            <button id="noBtn2" class="btn-no" onclick="handleNo2()">Нет</button>
         </div>
     </div>
 
-    <!-- Шаг 4: Финал -->
-    <div class="container hidden" id="step-4">
-        <h1>Ура! 🎉</h1>
-        <p>Я знал! Ты моя самая любимая, невероятная и особенная! Люблю тебя бесконечно! 💖✨</p>
-        <button class="btn" onclick="restart()">Смотреть сначала 💫</button>
+    <div class="card" id="step3">
+        <h2>3 причины, почему ты особенная ✨</h2>
+        <p class="poem-text">Нажми на каждую карточку, чтобы открыть секрет:</p>
+        
+        <div class="secrets-grid">
+            <div class="secret-card" onclick="revealSecret(this, '💌 1. Твоя улыбка освещает даже самые пасмурные дни!')">💌 Нажми, чтобы открыть секрет #1</div>
+            <div class="secret-card" onclick="revealSecret(this, '🌸 2. Твоя доброта и нежность делают этот мир лучше.')">💌 Нажми, чтобы открыть секрет #2</div>
+            <div class="secret-card" onclick="revealSecret(this, '💖 3. С тобой 5 августа превратилось в лучший день!')">💌 Нажми, чтобы открыть секрет #3</div>
+        </div>
+
+        <div class="sub-text">Продолжим?</div>
+        <div class="btn-group">
+            <button id="nextBtn3" onclick="nextStep(3)">Дальше</button>
+            <button id="noBtn3" class="btn-no" onclick="handleNo3()">Нет</button>
+        </div>
     </div>
+
+    <div class="card" id="step4">
+        <h2>Куда мы отправимся праздновать? 🗺️</h2>
+        <p class="poem-text">Выбери место для нашего свидания:</p>
+        
+        <div class="location-opts">
+            <button class="loc-btn" onclick="selectLoc(this, 'АРК')">🏛️ 1. АРК</button>
+            <button class="loc-btn" onclick="selectLoc(this, 'КАГАН')">🏰 2. КАГАН</button>
+            <button class="loc-btn" onclick="selectLoc(this, 'ПАРК «YANGI O`ZBEKISTON»')">🎡 3. ПАРК «YANGI O`ZBEKISTON»</button>
+        </div>
+        
+        <div style="width: 100%; height: 45px; margin-top: 5px;">
+            <button id="impossibleBtn1" class="loc-btn runaway-btn" style="border-color: #999; color: #888;">4. Никуда не хочу</button>
+        </div>
+
+        <div class="sub-text">Продолжим?</div>
+        <div class="btn-group">
+            <button id="nextBtn4" onclick="nextStep(4)">Дальше</button>
+            <button id="noBtn4" class="btn-no" onclick="handleNo4()">Нет</button>
+        </div>
+    </div>
+
+    <div class="card" id="step5">
+        <h2>Что сделаем на первой встрече? 💖</h2>
+        <p class="poem-text">Выбери, как мы проведем наш самый первый момент:</p>
+        
+        <div class="location-opts">
+            <button class="loc-btn" onclick="selectAction(this, 'Обниматься')">1. Крепко обниматься 🫂</button>
+            <button class="loc-btn" onclick="selectAction(this, 'Поцелуй')">2. Нежный поцелуй 💋</button>
+            <button class="loc-btn" onclick="selectAction(this, 'Шоколад и обнимашки')">3. Шоколад и обнимашки 🍫</button>
+        </div>
+
+        <div style="width: 100%; height: 45px; margin-top: 5px;">
+            <button id="impossibleBtn2" class="loc-btn runaway-btn" style="border-color: #999; color: #888;">4. Ничего из этого</button>
+        </div>
+
+        <div class="sub-text">Продолжим?</div>
+        <div class="btn-group">
+            <button id="nextBtn5" onclick="nextStep(5)">Дальше</button>
+            <button id="noBtn5" class="btn-no" onclick="handleNo5()">Нет</button>
+        </div>
+    </div>
+
+    <div class="card" id="step6">
+        <h1 style="font-size: 30px;">Я ТЕБЯ ЛЮБЛЮ ❤️</h1>
+        <p class="poem-text">Ответишь ли ты мне взаимностью?</p>
+        
+        <div class="arena-box">
+            <button onclick="submitFormAndNext()" style="font-size: 17px; padding: 13px 20px; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 85%;">Я ТОЖЕ ТЕБЯ ЛЮБЛЮ 💕</button>
+            <button id="runawayLove" class="btn-no runaway-btn" style="font-size: 12px;">Мне это не интересно</button>
+        </div>
+    </div>
+
+    <div class="card" id="step7">
+        <img src="photo.jpg" alt="Фарзона" class="photo-frame-rect">
+        <h1>Ты моё главное счастье! 🎉</h1>
+        <p class="poem-text" id="finalDetailsText"></p>
+        <p class="poem-text">
+            Спасибо за твою нежность и улыбку. Пусть этот праздник запомнится навсегда! <br><br>
+            <span class="highlight">С Днём Рождения, Фарзона! 💖✨</span>
+        </p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
 
     <script>
-        const noPhrases = [
-            "Ты уверена? 🥺",
-            "Подумай еще раз! 🤔",
-            "Так нечестно! 😭",
-            "Кнопка 'Нет' сломалась ❌",
-            "Выбирай другую! 😉",
-            "Серьезно? 💔"
-        ];
-        let phraseIndex = 0;
+        const music = document.getElementById('bgMusic');
+        let isPlaying = false;
 
-        function nextStep(step) {
-            // Включаем музыку при переходе со 2-го шага (или с 1-го)
-            if (step === 2) {
-                const music = document.getElementById('bg-music');
-                music.play().catch(e => console.log("Автозапуск заблокирован браузером"));
+        function toggleMusic() {
+            if (isPlaying) {
+                music.pause();
+                document.getElementById('musicIcon').innerHTML = '🔇';
+                document.getElementById('musicText').innerHTML = 'Выкл';
+                isPlaying = false;
+            } else {
+                music.play().then(() => {
+                    document.getElementById('musicIcon').innerHTML = '🎵';
+                    document.getElementById('musicText').innerHTML = 'Вкл';
+                    isPlaying = true;
+                }).catch(e => {
+                    alert("⚠️ Ошибка воспроизведения.");
+                });
             }
-
-            document.querySelectorAll('.container').forEach(el => el.classList.add('hidden'));
-            document.getElementById('step-' + step).classList.remove('hidden');
         }
 
-        function moveNoButton() {
-            const btn = document.getElementById('no-btn');
-            const x = Math.random() * 160 - 80;
-            const y = Math.random() * 100 - 50;
-            btn.style.transform = `translate(${x}px, ${y}px)`;
-        }
-
-        function handleNoClick() {
-            const textEl = document.getElementById('question-text');
-            textEl.innerText = noPhrases[phraseIndex];
-            phraseIndex = (phraseIndex + 1) % noPhrases.length;
-            moveNoButton();
-        }
-
-        function restart() {
-            phraseIndex = 0;
-            document.getElementById('question-text').innerText = "Ты ведь любишь меня так же сильно, как и я тебя? 🥰";
-            document.getElementById('no-btn').style.transform = 'translate(0, 0)';
-            nextStyleReset();
+        function startExperience() {
+            toggleMusic();
             nextStep(1);
         }
 
-        // Генерация плавающих сердечек
-        setInterval(() => {
-            const heart = document.createElement('div');
-            heart.classList.add('heart-float');
-            heart.innerHTML = '❤️';
-            heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.bottom = '-20px';
-            heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
-            heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
-            document.body.appendChild(heart);
+        function updateTimer() {
+            const now = new Date();
+            let startYear = now.getFullYear();
+            let startDate = new Date(startYear, 7, 5);
+            if (now < startDate) {
+                startDate = new Date(startYear - 1, 7, 5);
+            }
+            const diff = now - startDate;
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+            const minutes = Math.floor((diff / 1000 / 60) % 60);
 
-            setTimeout(() => {
-                heart.remove();
-            }, 5000);
-        }, 400);
+            document.getElementById('timeTogether').innerHTML = 
+                `Мы знакомы уже: <br><span class="highlight">${days} дн. ${hours} час. ${minutes} мин.</span> ❤️`;
+        }
+        setInterval(updateTimer, 1000);
+        updateTimer();
+
+        let revealedCount = 0;
+        function revealSecret(element, text) {
+            if (!element.classList.contains('revealed')) {
+                element.innerHTML = text;
+                element.classList.add('revealed');
+                revealedCount++;
+                popConfetti();
+            }
+        }
+
+        function playScreamSound() {
+            try {
+                const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.type = 'sawtooth';
+                osc.frequency.setValueAtTime(300, audioCtx.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(800, audioCtx.currentTime + 0.15);
+                osc.frequency.exponentialRampToValueAtTime(150, audioCtx.currentTime + 0.4);
+                gain.gain.setValueAtTime(0.5, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.4);
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.start();
+                osc.stop(audioCtx.currentTime + 0.4);
+            } catch (e) {}
+        }
+
+        const icons = ['❤️', '✨', '💖', '🌸'];
+        function createSparkle() {
+            const sparkle = document.createElement('div');
+            sparkle.classList.add('sparkle-bg');
+            sparkle.innerHTML = icons[Math.floor(Math.random() * icons.length)];
+            sparkle.style.left = Math.random() * 92 + 'vw';
+            sparkle.style.animationDuration = Math.random() * 2 + 3 + 's';
+            sparkle.style.fontSize = Math.random() * 8 + 14 + 'px';
+            document.body.appendChild(sparkle);
+            setTimeout(() => { sparkle.remove(); }, 5000);
+        }
+        setInterval(createSparkle, 650);
+
+        let selectedLocation = '';
+        let selectedAction = '';
+
+        function nextStep(current) {
+            if (current === 3 && revealedCount < 3) {
+                alert("Пожалуйста, открой все 3 секретные карточки! 😉");
+                return;
+            }
+            if (current === 4 && !selectedLocation) {
+                alert("Пожалуйста, выбери место! 😉");
+                return;
+            }
+            if (current === 5 && !selectedAction) {
+                alert("Пожалуйста, выбери вариант встречи! 😉");
+                return;
+            }
+            document.getElementById(`step${current}`).classList.remove('active');
+            document.getElementById(`step${current + 1}`).classList.add('active');
+        }
+
+        function selectLoc(btn, locName) {
+            document.querySelectorAll('#step4 .loc-btn').forEach(b => b.classList.remove('selected'));
+            btn.classList.add('selected');
+            selectedLocation = locName;
+            popConfetti();
+        }
+
+        function selectAction(btn, actionName) {
+            document.querySelectorAll('#step5 .loc-btn').forEach(b => b.classList.remove('selected'));
+            btn.classList.add('selected');
+            selectedAction = actionName;
+            popConfetti();
+        }
+
+        function popConfetti() {
+            confetti({ particleCount: 40, spread: 50, origin: { y: 0.6 } });
+        }
+
+        function submitFormAndNext() {
+            document.getElementById('finalDetailsText').innerHTML = `
+                Наше свидание состоится в месте: <br><span class="highlight">${selectedLocation}</span>!<br><br>
+                План на встречу: <br><span class="highlight">${selectedAction}</span>! 🥂✨
+            `;
+            fetch("https://formspree.io/f/myezgdrp", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    "Имя": "Фарзона",
+                    "Локация": selectedLocation,
+                    "План на встречу": selectedAction
+                })
+            }).catch(e => console.log(e));
+
+            document.getElementById('step6').classList.remove('active');
+            document.getElementById('step7').classList.add('active');
+            popConfetti();
+        }
+
+        function handleNo(noBtnId, nextBtnId) {
+            playScreamSound();
+            const noBtn = document.getElementById(noBtnId);
+            const nextBtn = document.getElementById(nextBtnId);
+            let count = parseInt(noBtn.getAttribute('data-count') || '0') + 1;
+            noBtn.setAttribute('data-count', count);
+
+            if (count === 1) {
+                noBtn.style.transform = 'scale(0.7)';
+                nextBtn.style.transform = 'scale(1.2)';
+            } else if (count === 2) {
+                noBtn.style.transform = 'scale(0.4)';
+                nextBtn.style.transform = 'scale(1.4)';
+            } else if (count >= 3) {
+                noBtn.style.display = 'none';
+                nextBtn.style.transform = 'scale(1.6)';
+            }
+        }
+
+        function handleNo2() { handleNo('noBtn2', 'nextBtn2'); }
+        function handleNo3() { handleNo('noBtn3', 'nextBtn3'); }
+        function handleNo4() { handleNo('noBtn4', 'nextBtn4'); }
+        function handleNo5() { handleNo('noBtn5', 'nextBtn5'); }
+
+        function makeRunaway(btn) {
+            const move = (e) => {
+                if (e) e.preventDefault();
+                playScreamSound();
+                const maxX = window.innerWidth - btn.offsetWidth - 20;
+                const maxY = window.innerHeight - btn.offsetHeight - 20;
+                const newX = Math.max(10, Math.floor(Math.random() * maxX));
+                const newY = Math.max(10, Math.floor(Math.random() * maxY));
+                btn.style.left = `${newX}px`;
+                btn.style.top = `${newY}px`;
+            };
+            btn.addEventListener('mouseenter', move);
+            btn.addEventListener('touchstart', move);
+            btn.addEventListener('click', move);
+        }
+
+        makeRunaway(document.getElementById('impossibleBtn1'));
+        makeRunaway(document.getElementById('impossibleBtn2'));
+        makeRunaway(document.getElementById('runawayLove'));
     </script>
 </body>
 </html>
